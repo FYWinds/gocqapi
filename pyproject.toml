@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "nonebot_plugin_gocqapi"
+name = "gocqapi"
 version = "0.1.0"
 description = "go-cqhttp API typing annoations, return data models and utils for nonebot"
 authors = ["风屿 <i@windis.cn>"]
@@ -7,9 +7,6 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.7.3, <3.10"
-httpx = "^0.21.1"
-nonebot2 = "^2.0.0-alpha.16"
-nonebot-adapter-cqhttp = "^2.0.0-alpha.16"
 
 
 [build-system]
