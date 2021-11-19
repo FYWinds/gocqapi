@@ -1,4 +1,4 @@
-# Nonebot-plugin-GocqAPI
+# Nonebot-plugin-gocqapi
 
 通过 pydantic 为 go-cqhttp 的 API 添加了完善的类型注解和返回值models
 
