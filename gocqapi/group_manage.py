@@ -3,7 +3,7 @@ from io import BytesIO
 from typing import Union, Literal, Optional
 from pathlib import Path
 
-from nonebot.adapters.cqhttp.event import Anonymous
+from nonebot.adapters.onebot.v11.event import Anonymous
 
 from ._api import BaseAPI
 
@@ -86,7 +86,9 @@ class GroupManagementAPI(BaseAPI):
             duration=duration,
         )
 
-    async def set_group_whole_ban(self, group_id: Union[int, str], enable: bool) -> None:
+    async def set_group_whole_ban(
+        self, group_id: Union[int, str], enable: bool
+    ) -> None:
         """
         :说明: `set_group_whole_ban`
         > [**群组全员禁言**](https://docs.go-cqhttp.org/api/#%E7%BE%A4%E7%BB%84%E5%85%A8%E5%91%98%E7%A6%81%E8%A8%80)
@@ -138,7 +140,9 @@ class GroupManagementAPI(BaseAPI):
         """
         await self.call("set_group_name", group_id=group_id, group_name=group_name)
 
-    async def set_group_leave(self, group_id: Union[int, str], is_dismiss: bool) -> None:
+    async def set_group_leave(
+        self, group_id: Union[int, str], is_dismiss: bool
+    ) -> None:
         """
         :说明: `set_group_leave`
         > [**退出群组**](https://docs.go-cqhttp.org/api/#%E9%80%80%E5%87%BA%E7%BE%A4%E7%BB%84)

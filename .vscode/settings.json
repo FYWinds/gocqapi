@@ -1,0 +1,6 @@
+{
+    "python.sortImports.args": [
+        "--ls"
+    ],
+    "python.formatting.provider": "black"
+}

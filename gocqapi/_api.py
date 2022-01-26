@@ -2,7 +2,7 @@ from typing import Any, Union, Optional
 
 import nonebot
 from nonebot.log import logger
-from nonebot.adapters.cqhttp import Message, ActionFailed, escape
+from nonebot.adapters.onebot.v11 import Message, escape
 
 
 class BaseAPI:

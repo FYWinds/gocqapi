@@ -1,6 +1,6 @@
 from typing import List, Union, Optional
 
-from nonebot.adapters.cqhttp import Message, MessageSegment, GroupMessageEvent
+from nonebot.adapters.onebot.v11 import Message, MessageSegment, GroupMessageEvent
 
 from ._api import BaseAPI
 from .models import *

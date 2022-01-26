@@ -2,8 +2,8 @@ from typing import List, Literal, Optional
 
 import httpx
 from pydantic import BaseModel
-from nonebot.adapters.cqhttp import Message, MessageSegment, GroupMessageEvent
-from nonebot.adapters.cqhttp.event import Sender
+from nonebot.adapters.onebot.v11 import Message, MessageSegment, GroupMessageEvent
+from nonebot.adapters.onebot.v11.event import Sender
 
 
 class SelfGroupMessage(GroupMessageEvent):
@@ -12,15 +12,22 @@ class SelfGroupMessage(GroupMessageEvent):
 
 class MessageGot(BaseModel):
     message_id: int
+    """消息id"""
     real_id: int
+    """消息真实id"""
     sender: Sender
+    """发送者"""
     time: int
+    """发送时间"""
     message: Message
+    """消息内容"""
     raw_message: str
+    """原始消息内容"""
 
 
 class GroupMessageGot(MessageGot):
     group_id: int
+    """群号"""
     message_type: Literal["group"]
 
 
@@ -250,6 +257,7 @@ class OCRResult(BaseModel):
 
 __all__ = [
     "SelfGroupMessage",
+    "Sender",
     "MessageGot",
     "GroupMessageGot",
     "BaseUserInfo",
@@ -257,10 +265,17 @@ __all__ = [
     "FriendInfo",
     "GroupInfo",
     "GroupMemberInfo",
+    "Honor",
     "HonorInfo",
+    "Request",
+    "InvitedRequest",
+    "JoinRequest",
     "GroupSystemMsg",
     "GroupFileSystemInfo",
+    "File",
+    "Folder",
     "FileInfo",
+    "Statictics",
     "Status",
     "AtAllRemain",
     "VipInfo",
@@ -269,5 +284,7 @@ __all__ = [
     "ForwardMsg",
     "ImageInfo",
     "VersionInfo",
+    "OCRCoordinates",
+    "OCRText",
     "OCRResult",
 ]
