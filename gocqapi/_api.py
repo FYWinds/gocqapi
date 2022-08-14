@@ -13,7 +13,7 @@ class BaseAPI:
         if bot_id:
             self.bot_id = str(bot_id) if isinstance(bot_id, int) else bot_id
 
-    async def call(self, api: str, **kwargs: Any) -> dict[Any, Any]:
+    async def call(self, api: str, **kwargs: Any):
         if self.bot is None:
             try:
                 if self.bot_id:
