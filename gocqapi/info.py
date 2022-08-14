@@ -49,7 +49,7 @@ class InfoAPI(BaseAPI):
           * `no_cache: bool = True`: 是否不使用GOCQ端本地缓存的信息，默认不使用缓存
 
         :返回:
-          - `dict[Any, Any]`: 响应数据 参考GOCQ文档
+          - `Dict[Any, Any]`: 响应数据 参考GOCQ文档
         """
         return GroupInfo(
             **(await self.call("get_group_info", group_id=group_id, no_cache=no_cache))
@@ -61,7 +61,7 @@ class InfoAPI(BaseAPI):
         > [**获取好友列表**](https://docs.go-cqhttp.org/api/#%E8%8E%B7%E5%8F%96%E5%A5%BD%E5%8F%8B%E5%88%97%E8%A1%A8)
 
         :返回:
-          - `dict[Any, Any]`: 响应数据 参考GOCQ文档
+          - `Dict[Any, Any]`: 响应数据 参考GOCQ文档
         """
         return [FriendInfo(**i) for i in (await self.call("get_friend_list"))]
 
@@ -71,7 +71,7 @@ class InfoAPI(BaseAPI):
         > [**获取群列表**](https://docs.go-cqhttp.org/api/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E5%88%97%E8%A1%A8)
 
         :返回:
-          - `dict[Any, Any]`: 响应数据 参考GOCQ文档
+          - `Dict[Any, Any]`: 响应数据 参考GOCQ文档
         """
         return [GroupInfo(**i) for i in (await self.call("get_group_list"))]
 
@@ -86,7 +86,7 @@ class InfoAPI(BaseAPI):
           * `group_id: Union[int, str]`: 群号
 
         :返回:
-          - `dict[Any, Any]`: 响应数据 参考GOCQ文档
+          - `Dict[Any, Any]`: 响应数据 参考GOCQ文档
         """
         return GroupMemberInfo(
             **(await self.call("get_group_member_info", group_id=group_id))
@@ -103,7 +103,7 @@ class InfoAPI(BaseAPI):
           * `group_id: Union[int, str]`: 群号
 
         :返回:
-          - `dict[Any, Any]`: 响应数据 参考GOCQ文档
+          - `Dict[Any, Any]`: 响应数据 参考GOCQ文档
         """
         return [
             GroupMemberInfo(**i)
@@ -130,7 +130,7 @@ class InfoAPI(BaseAPI):
           默认获取全部
 
         :返回:
-          - `dict[Any, Any]`: 响应数据 参考GOCQ文档
+          - `Dict[Any, Any]`: 响应数据 参考GOCQ文档
         """
         return HonorInfo(
             **(
