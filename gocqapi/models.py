@@ -255,6 +255,23 @@ class OCRResult(BaseModel):
     texts: List[OCRText]
 
 
+class GroupNoticeImage(BaseModel):
+    height: str
+    weight: str
+    id: str
+
+
+class GroupNoticeMessage(BaseModel):
+    text: str
+    images: List[GroupNoticeImage]
+
+
+class GroupNotice(BaseModel):
+    sender_id: int
+    publish_time: int
+    message: GroupNoticeMessage
+
+
 __all__ = [
     "SelfGroupMessage",
     "Sender",
@@ -287,4 +304,7 @@ __all__ = [
     "OCRCoordinates",
     "OCRText",
     "OCRResult",
+    "GroupNoticeImage",
+    "GroupNoticeMessage",
+    "GroupNotice",
 ]

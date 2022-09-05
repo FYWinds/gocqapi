@@ -1,3 +1,6 @@
+from typing import Union
+from pathlib import Path
+
 from ._api import BaseAPI
 
 
@@ -27,3 +30,9 @@ class SelfManagementAPI(BaseAPI):
           * `friend_id: int`: 好友 QQ 号
         """
         await self.call("delete_friend", friend_id=friend_id)
+
+    async def reload_event_filter(self, file: Union[str, Path]) -> None:
+        await self.call(
+            "reload_event_filter",
+            file=(file.resolve() if isinstance(file, Path) else file),
+        )

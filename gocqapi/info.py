@@ -383,3 +383,16 @@ class InfoAPI(BaseAPI):
                 "download_file", url=url, thread_count=thread_count, headers=headers
             )
         )["file"]
+
+    async def get_group_notice(self, group_id: Union[int, str]) -> GroupNotice:
+        """
+        :说明: `get_group_notice`
+        > [**获取群公告**](https://docs.go-cqhttp.org/api/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E5%85%AC%E5%91%8A)
+
+        :参数:
+          * `group_id: Union[int, str]`: 群号
+
+        :返回:
+          - `GroupNotice`: 群公告内容，字段见GOCQ文档
+        """
+        return GroupNotice(**(await self.call("_get_group_notice", group_id=group_id)))

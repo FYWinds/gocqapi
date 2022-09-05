@@ -2,5 +2,6 @@
     "python.sortImports.args": [
         "--ls"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "autoDocstring.customTemplatePath": ".vscode/docstring.mustache"
 }

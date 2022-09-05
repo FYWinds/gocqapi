@@ -254,10 +254,62 @@ class GroupManagementAPI(BaseAPI):
           * `name: str`: 文件名
           * `folder: str`: 群文件父文件夹 ID
         """
-        if isinstance(file, Path):
-            file = str(file.resolve())
         await self.call(
-            "upload_group_file", group_id=group_id, file=file, name=name, folder=folder
+            "upload_group_file",
+            group_id=group_id,
+            file=(file.resolve() if isinstance(file, Path) else file),
+            name=name,
+            folder=folder,
+        )
+
+    async def create_group_file_folder(
+        self, group_id: Union[int, str], name: str, parent_id: Literal["/"] = "/"
+    ) -> None:
+        """
+        :说明: `create_group_file_folder`
+        > [**创建群文件夹**](https://docs.go-cqhttp.org/api/#%E5%88%9B%E5%BB%BA%E7%BE%A4%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9)]
+
+        :参数:
+          * `group_id: Union[int, str]`: 群号
+          * `name: str`: 文件夹名称
+
+        :可选参数:
+          * `parent_id: "/"`:父文件夹，仅能为"/"
+        """
+        await self.call(
+            "create_group_file_folder",
+            group_id=group_id,
+            name=name,
+            parent_id=parent_id,
+        )
+
+    async def delete_group_folder(
+        self, group_id: Union[int, str], folder_id: str
+    ) -> None:
+        """
+        :说明: `delete_group_folder`
+        > [**删除群文件夹**](https://docs.go-cqhttp.org/api/#%E5%88%A0%E9%99%A4%E7%BE%A4%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9)
+
+        :参数:
+          * `group_id: Union[int, str]`: 群号
+          * `folder_id: str`: 文件夹 ID
+        """
+        await self.call("delete_group_folder", group_id=group_id, folder_id=folder_id)
+
+    async def delete_group_file(
+        self, group_id: Union[int, str], file_id: str, busid: int
+    ) -> None:
+        """
+        :说明: `delete_group_file`
+        > [**删除群文件**](https://docs.go-cqhttp.org/api/#%E5%88%A0%E9%99%A4%E7%BE%A4%E6%96%87%E4%BB%B6)
+
+        :参数:
+          * `group_id: Union[int, str]`: 群号
+          * `file_id: str`: 文件 ID
+          * `busid: int`: 文件 busid
+        """
+        await self.call(
+            "delete_group_file", group_id=group_id, file_id=file_id, busid=busid
         )
 
     async def send_group_notice(self, group_id: Union[int, str], content: str) -> None:

@@ -1,4 +1,5 @@
 from typing import List, Union, Optional
+from pathlib import Path
 
 from nonebot.adapters.onebot.v11 import Message, MessageSegment, GroupMessageEvent
 
@@ -212,3 +213,22 @@ class MessageAPI(BaseAPI):
           * `message_id: Union[int, str]`: 消息ID
         """
         await self.call("delete_essence_msg", message_id=message_id)
+
+    async def upload_private_file(
+        self, user_id: Union[int, str], file: Union[str, Path], name: str
+    ) -> None:
+        """
+        :说明: `upload_private_file`
+        > [**上传私聊文件**](https://docs.go-cqhttp.org/api/#%E4%B8%8A%E4%BC%A0%E7%A7%81%E8%81%8A%E6%96%87%E4%BB%B6)
+
+        :参数:
+          * `user_id: Union[int, str]`: QQ号
+          * `file: Union[str, Path]`: 文件路径
+          * `name: str`: 文件名
+        """
+        await self.call(
+            "upload_private_file",
+            user_id=user_id,
+            file=(file.resolve() if isinstance(file, Path) else file),
+            name=name,
+        )
